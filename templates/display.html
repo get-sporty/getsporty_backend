@@ -1,0 +1,77 @@
+<head>
+
+    <title>Mauve Desk - Race Control - {{ track }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script>
+//TODO: Individual flag_point control
+//TODO: listen for input from broker (AJAX from server to app)
+//TODO: Greens after safety car clear
+
+  var map;
+
+  //Function for adding markers
+function addMarker(feature) {
+	//Add markers
+     var infowindow = new google.maps.InfoWindow({
+      content: feature.content});
+  var marker = new google.maps.Marker({
+	position: feature.position,
+	map: map,
+	title: feature.title,
+  });
+  marker.addListener('click', function() {
+          infowindow.open(map, marker);
+   });
+   };
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: new google.maps.LatLng(-23.116667, 132.133333),
+          mapTypeId: 'satellite',
+          rotateControl: true,
+        });
+
+        var features = [
+{% for point in points %}
+          {
+            position: new google.maps.LatLng({{ point.location.coordinates.1 }}, {{ point.location.coordinates.0 }}),
+			title: '{{ point.name }}',
+			{% if point.type %}
+			content : '<b>{{ point.name }}</b><p>{{ point.type }}</p>'
+			{% else %}
+			content : '<b>{{ point.name }}</b>'
+			{% endif %}
+          },
+{% endfor %}
+        ];
+
+        for (var i = 0, feature; feature = features[i]; i++) {
+          addMarker(feature);
+        }
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ api }}&callback=initMap">
+    </script>
+</body>

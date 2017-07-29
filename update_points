@@ -1,4 +1,4 @@
-import pymongo
+import pymongo, requests
 
 connection = pymongo.MongoClient('mongo.getsporty.space')
 db = connection.getsporty
@@ -10,10 +10,10 @@ for i in db.sportsgrounds.find({
      '$near': {
        '$geometry': {
           'type': "Point",
-          'coordinates': [143.849751,-37.560969, ]
+          'coordinates': [149.126482,-35.331553]
        },
        '$minDistance': 5,
-       '$maxDistance': 3000,
+       '$maxDistance': 1000,
      }
    }
 }):
