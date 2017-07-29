@@ -2,9 +2,13 @@
 
 ## Sportsground Data Model (sportsgrounds collection)
 ```python
-{ name : 'The Allan Renwick Memorial Cricket Field',
-  lat : 35.2809,
-  long : 149.1300}
+{
+        'name' : name
+        'location': {
+            'type': "Point",
+            'coordinates' : [lon, lat]
+        }
+            }
 ```
 
 ## Games Data Model (games collection)
