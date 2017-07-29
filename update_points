@@ -1,0 +1,20 @@
+import pymongo
+
+connection = pymongo.MongoClient('mongo.getsporty.space')
+db = connection.getsporty
+spherical_distance = 750/1000
+
+#db.sportsgrounds.createIndex({point:"2dsphere"})
+for i in db.sportsgrounds.find({
+   'location': {
+     '$near': {
+       '$geometry': {
+          'type': "Point",
+          'coordinates': [143.849751,-37.560969, ]
+       },
+       '$minDistance': 5,
+       '$maxDistance': 3000,
+     }
+   }
+}):
+    print i['name']
