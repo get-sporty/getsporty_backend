@@ -1,6 +1,31 @@
 # Get Sporty!
 
-## Sportsground Data Model (sportsgrounds collection)
+## Screenshots
+
+### Main App
+-Green points have active events
+-Red don't have events
+-Both allow the user at add events!
+![main app](https://image.ibb.co/gKzPVQ/image.png)
+
+### New Event
+-Needs proper css
+![new event](https://image.ibb.co/jS8q4k/image.png)
+
+### Subscription Service
+-Needs proper css
+-Allows connection through email
+![subscription service](https://image.ibb.co/c8qyqQ/image.png
+
+### Built on Amazon and .SPACE
+![route 53](https://image.ibb.co/nAsBAQ/image.png)
+![ec2](https://image.ibb.co/dhWzx5/image.png)
+
+### MongoDB for flexibility
+![mongodb](https://image.ibb.co/g28JqQ/image.png)
+
+## Basic data models
+### Sportsground Data Model (sportsgrounds collection)
 ```python
 {
     'name' : name,
@@ -12,7 +37,7 @@
 }
 ```
 
-## Games Data Model (events collection)
+### Games Data Model (events collection)
 
 ```python
 { name : 'The renwallz challenge',
@@ -25,7 +50,7 @@
   }
 ```
 
-## Users Data Model (users collection)
+### Users Data Model (users collection)
 
 ```python
 { 
