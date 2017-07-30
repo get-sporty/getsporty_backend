@@ -3,22 +3,35 @@
 ## Sportsground Data Model (sportsgrounds collection)
 ```python
 {
-        'name' : name
-        'location': {
-            'type': "Point",
-            'coordinates' : [lon, lat]
-        }
-            }
+    'name' : name,
+    'type' : [list, of, sports],
+    'location': {
+        'type': "Point",
+        'coordinates' : [lon, lat]
+    }
+}
 ```
 
-## Games Data Model (games collection)
+## Games Data Model (events collection)
 
 ```python
 { name : 'The renwallz challenge',
-  creator : 'ajrenwi', #possibly OAuth?
+  creator : 'renwallz', #possibly OAuth?
   active : True,
   loc : <ref to field>,
   num_players : 24, #2 cricket teams, event should send start notification to players once it hits this amount
   subscribed : 2, #num of players in game
+  time_created: current_timestamp, #time the event was created, in the future it could refer to scheduled time of game
   }
+```
+
+## Users Data Model (users collection)
+
+```python
+{ 
+    'name' : name
+    'email' : email
+    'password': password #sha512 hashed password with salt
+    'OAuth': OAuth token #if we have infinite time
+}
 ```
