@@ -21,6 +21,22 @@ def register(json_data):
 def new_event(json_data):
     db.users.update()
     return
+	
+@app.route('/results')
+def get_nearby_points(json_data):
+    location = json_data['location']
+    points = []
+    for i in db.sportsgrounds.find({
+        'location': {
+            '$near': {
+                '$geometry': {location},
+                '$minDistance': 5,
+                '$maxDistance': 1000,
+            }
+        }
+    }):
+        points.append(i)
+    return points    #I have no idea how flask works
 
 def push_notification():
     flask.request()
