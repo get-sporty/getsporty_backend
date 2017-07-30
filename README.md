@@ -21,5 +21,6 @@
   loc : <ref to field>,
   num_players : 24, #2 cricket teams, event should send start notification to players once it hits this amount
   subscribed : 2, #num of players in game
+  time_created: current_timestamp, #time the event was created, in the future it could refer to scheduled time of game
   }
 ```
