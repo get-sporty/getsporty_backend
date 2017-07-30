@@ -12,7 +12,7 @@
 }
 ```
 
-## Games Data Model (games collection)
+## Games Data Model (events collection)
 
 ```python
 { name : 'The renwallz challenge',
@@ -23,4 +23,15 @@
   subscribed : 2, #num of players in game
   time_created: current_timestamp, #time the event was created, in the future it could refer to scheduled time of game
   }
+```
+
+## Users Data Model (users collection)
+
+```python
+{ 
+    'name' : name
+    'email' : email
+    'password': password #sha512 hashed password with salt
+    'OAuth': OAuth token #if we have infinite time
+}
 ```
