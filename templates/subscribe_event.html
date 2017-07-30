@@ -5,16 +5,28 @@
     <title>Subscribe</title>
 </head>
 <body>
+<h1>New Event - {{ loc_name }} - {{ event.name }}</h1>
+<h2>Players</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
 {% for sub in event.subscriber %}
-{{ sub }}
+<tr>
+    <td>{{ sub.0 }}</td>
+    <td>{{ sub.1 }}</td>
+    </tr>
 {% endfor %}
-<form action="/subscribe_event">
+</table>
+<h2>Join!</h2>
+<form action="/subscribe_event" method="post">
   User:<br>
   <input type="text" name="user" value="Johnny Sport">
   <br>
   Email:<br>
   <input type="text" name="email" value="j.sport@sport.com">
-    <input type="hidden" name="event" value="{{ event }}">
+    <input type="hidden" name="event" value="{{ event._id }}">
   <br><br>
   <input type="submit" value="Submit">
 </form>

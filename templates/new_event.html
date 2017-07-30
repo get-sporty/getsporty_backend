@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/new_event">
+<h1>New Event - {{ name }}</h1>
+<form action="/new_event" method="post">
   Event Name:<br>
   <input type="text" name="name" value="Johnny Sport Time">
   <br>
@@ -13,9 +14,10 @@
   <input type="text" name="creator_name" value="Johnny Sport">
     <br>
   Creator Email:<br>
-  <input type="text" name="creator_email" value="Johnny Sport">
+  <input type="text" name="creator_email" value="j.dport@sport.com">
+    <br>
     Number Players:<br>
-  <input type="text" name="num_players" value="Johnny Sport">
+  <input type="text" name="num_players" value="24">
     <input type="hidden" name="field" value="{{ ground }}">
   <br><br>
   <input type="submit" value="Submit">
