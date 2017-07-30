@@ -1,10 +1,13 @@
 import pymongo, requests
 
+"""
+Draft code for dealing with geolocation
+"""
+
 connection = pymongo.MongoClient('mongo.getsporty.space')
 db = connection.getsporty
-spherical_distance = 750/1000
 
-#db.sportsgrounds.createIndex({point:"2dsphere"})
+#db.sportsgrounds.createIndex({'':"2dsphere"})
 for i in db.sportsgrounds.find({
    'location': {
      '$near': {

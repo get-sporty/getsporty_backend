@@ -1,6 +1,6 @@
 <head>
 
-    <title>Mauve Desk - Race Control - {{ track }}</title>
+    <title>Get Sporty! - GovHack 2017</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -56,11 +56,18 @@ function addMarker(feature) {
           {
             position: new google.maps.LatLng({{ point.location.coordinates.1 }}, {{ point.location.coordinates.0 }}),
 			title: '{{ point.name }}',
-			{% if point.type %}
-			content : '<b>{{ point.name }}</b><p>{{ point.type }}</p>'
-			{% else %}
-			content : '<b>{{ point.name }}</b>'
-			{% endif %}
+			content: '<div id="content">'+
+			        '<div id="siteNotice">'+
+			        '</div>'+
+			        '<h1 id="firstHeading" class="firstHeading">{{ point.name }}</h1>'+
+			        '<div id="bodyContent">'+
+			        {% if point.content %}
+			        {% for p in point.content %}
+			        '{{ p | safe}}'+
+			        {% endfor %}
+			        {% endif %}
+			        +'</div</div>',
+			colour : '{{ point.colour }}',
           },
 {% endfor %}
         ];

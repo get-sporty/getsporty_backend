@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe</title>
+</head>
+<body>
+{% for sub in event.subscriber %}
+{{ sub }}
+{% endfor %}
+<form action="/subscribe_event">
+  User:<br>
+  <input type="text" name="user" value="Johnny Sport">
+  <br>
+  Email:<br>
+  <input type="text" name="email" value="j.sport@sport.com">
+    <input type="hidden" name="event" value="{{ event }}">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>
